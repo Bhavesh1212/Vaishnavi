@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Rose Day 🌹</title>
+<title>Hello Vaishnavi 🎀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
@@ -18,66 +18,71 @@
 body{
   height:100vh;
   background-image:
-    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-    url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+    linear-gradient(rgba(255,182,193,0.55), rgba(255,182,193,0.55)),
+    url("https://images.unsplash.com/photo-1526045612212-70caf35c14df");
   background-size:cover;
   background-position:center;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
 
 .card{
-  background:rgba(255,255,255,0.92);
-  padding:32px 26px;
-  border-radius:18px;
+  background:white;
+  padding:30px 24px;
+  border-radius:22px;
   max-width:320px;
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,0.25);
-  animation:fadeUp 1s ease;
+  box-shadow:0 18px 35px rgba(0,0,0,0.2);
+  animation:pop 0.9s ease;
 }
 
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(20px)}
-  to{opacity:1; transform:translateY(0)}
+@keyframes pop{
+  from{opacity:0; transform:scale(0.92)}
+  to{opacity:1; transform:scale(1)}
+}
+
+.kitty{
+  width:120px;
+  margin:0 auto 10px;
 }
 
 h1{
-  font-size:1.7rem;
+  color:#ff5c8a;
+  font-size:1.6rem;
   margin-bottom:4px;
-  color:#e63946;
 }
 
 .name{
   font-size:1.2rem;
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 
 .rose{
-  font-size:3.8rem;
+  font-size:3.5rem;
   margin:10px 0;
-  animation:float 2.5s ease-in-out infinite;
+  animation:float 2.4s ease-in-out infinite;
 }
 
 @keyframes float{
-  0%,100{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-7px)}
 }
 
 p{
   font-size:0.95rem;
   color:#444;
-  margin-bottom:18px;
-  line-height:1.5;
+  margin-bottom:16px;
+  line-height:1.45;
 }
 
 button{
+  background:#ff5c8a;
   border:none;
-  background:#e63946;
-  color:#fff;
-  padding:10px 22px;
-  border-radius:20px;
-  font-size:0.95rem;
+  color:white;
+  padding:9px 22px;
+  border-radius:18px;
+  font-size:0.9rem;
   cursor:pointer;
 }
 
@@ -88,7 +93,7 @@ button:hover{
 #msg{
   display:none;
   margin-top:14px;
-  color:#e63946;
+  color:#ff5c8a;
   font-weight:500;
 }
 </style>
@@ -96,21 +101,25 @@ button:hover{
 <body>
 
 <div class="card">
-  <h1>Happy Rose Day</h1>
-  <div class="name">Vaishnavi 🌸</div>
+  <img class="kitty"
+       src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png"
+       alt="Hello Kitty">
+
+  <h1>Happy Rose Day Vaish</h1>
+  <div class="name">Vaishnavi 🎀</div>
 
   <div class="rose">🌹</div>
 
   <p>
-    Just a small rose for someone<br>
-    who makes things feel lighter.
+    Just a tiny hello,<br>
+    with a pink little rose.
   </p>
 
-  <button onclick="show()">Tap here</button>
+  <button onclick="show()">Tap me 🩷</button>
 
   <div id="msg">
-    This one’s for you Vaish <br>
-    and maybe one in real life too 🙂
+    This rose is from me…<br>
+    hope it made you smile 🐱🌸
   </div>
 </div>
 
