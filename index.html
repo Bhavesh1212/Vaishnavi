@@ -17,62 +17,68 @@
 
 body{
     height:100vh;
-    background: linear-gradient(135deg,#ffe6eb,#fff7f9);
+    background: linear-gradient(135deg,#ffe6eb,#fff1f5);
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
 }
 
-.card{
-    background:white;
-    padding:35px 28px;
-    border-radius:22px;
-    text-align:center;
-    max-width:360px;
-    box-shadow:0 20px 45px rgba(0,0,0,0.15);
-    animation:fadeIn 1.2s ease;
+/* floating hearts */
+@keyframes floatUp {
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
 }
 
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px)}
+.card{
+    background:white;
+    padding:36px 28px;
+    border-radius:24px;
+    text-align:center;
+    max-width:360px;
+    box-shadow:0 25px 55px rgba(0,0,0,0.18);
+    animation:fade 1.2s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(25px)}
     to{opacity:1; transform:translateY(0)}
 }
 
 h1{
     font-family:'Playfair Display', serif;
     font-size:2rem;
-    color:#ff3b6b;
-    margin-bottom:6px;
+    color:#ff3366;
 }
 
 .name{
-    font-size:1.3rem;
+    font-size:1.35rem;
+    margin:6px 0 12px;
     font-weight:500;
-    color:#222;
-    margin-bottom:15px;
 }
 
 .rose{
-    font-size:4.2rem;
+    font-size:4.4rem;
     margin:15px 0;
-    animation:float 2.5s ease-in-out infinite;
+    animation:bounce 2.6s ease-in-out infinite;
 }
 
-@keyframes float{
+@keyframes bounce{
     0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-12px)}
+    50%{transform:translateY(-14px)}
 }
 
 p{
     color:#555;
     font-size:1rem;
-    margin-bottom:22px;
-    line-height:1.5;
+    margin-bottom:20px;
+    line-height:1.55;
 }
 
 button{
-    background:#ff3b6b;
+    background:#ff3366;
     color:white;
     border:none;
     padding:12px 26px;
@@ -83,30 +89,41 @@ button{
 }
 
 button:hover{
-    transform:scale(1.06);
-    box-shadow:0 10px 25px rgba(255,59,107,0.45);
+    transform:scale(1.07);
+    box-shadow:0 12px 28px rgba(255,51,102,0.45);
 }
 
-.secret{
-    display:none;
-    margin-top:18px;
-    font-size:1.05rem;
-    color:#ff3b6b;
+/* rose picker */
+.pick{
+    font-size:2.4rem;
+    cursor:pointer;
+    transition:transform 0.2s;
+}
+.pick:hover{
+    transform:scale(1.25);
+}
+
+#roseMsg{
+    margin-top:12px;
     font-weight:500;
+    color:#ff3366;
+    min-height:42px;
 }
 
+/* hidden flirt */
+#secret{
+    display:none;
+    margin-top:16px;
+    font-weight:500;
+    color:#ff3366;
+}
+
+/* petals */
 .petal{
     position:absolute;
-    top:-10px;
+    bottom:-20px;
     font-size:1.4rem;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:0;
-    }
+    animation:floatUp linear forwards;
 }
 </style>
 </head>
@@ -119,34 +136,53 @@ button:hover{
     <div class="rose">🌹</div>
 
     <p>
-        This rose is a little way of saying —  
-        you bring warmth, grace, and a quiet kind of magic.
+        I was going to send just a rose…  
+        but then I thought — why stop at just *cute*?
     </p>
 
-    <button onclick="reveal()">Tap gently 💗</button>
+    <div style="display:flex; justify-content:space-around; margin:14px 0;">
+        <span class="pick" onclick="pick(0)">🌹</span>
+        <span class="pick" onclick="pick(1)">🌹</span>
+        <span class="pick" onclick="pick(2)">🌹</span>
+    </div>
 
-    <div id="note" class="secret">
-        If smiles had a fragrance,  
-        yours would feel exactly like this rose 🌹✨
+    <div id="roseMsg"></div>
+
+    <button onclick="reveal()">One last thing 👀</button>
+
+    <div id="secret">
+        Fair warning — if I gave you a real rose,  
+        I’d probably have to give you a smile with it too 😉
     </div>
 </div>
 
 <script>
-function reveal(){
-    document.getElementById("note").style.display="block";
-    petals();
+/* floating hearts background */
+setInterval(() => {
+    const el = document.createElement("div");
+    el.innerHTML = Math.random() > 0.5 ? "💖" : "🌹";
+    el.className = "petal";
+    el.style.left = Math.random()*100 + "vw";
+    el.style.animationDuration = (Math.random()*2 + 4) + "s";
+    el.style.opacity = Math.random();
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+},800);
+
+/* rose picker lines */
+const messages = [
+    "This rose thinks you have dangerous smile energy 🌹",
+    "This one says… you’re low-key trouble in the best way 💖",
+    "This rose picked you first. Don’t ask how 😌"
+];
+
+function pick(i){
+    document.getElementById("roseMsg").innerText = messages[i];
 }
 
-function petals(){
-    for(let i=0;i<30;i++){
-        let p=document.createElement("div");
-        p.className="petal";
-        p.innerHTML="🌸";
-        p.style.left=Math.random()*100+"vw";
-        p.style.animationDuration=(Math.random()*2+3)+"s";
-        document.body.appendChild(p);
-        setTimeout(()=>p.remove(),5000);
-    }
+/* final reveal */
+function reveal(){
+    document.getElementById("secret").style.display="block";
 }
 </script>
 
