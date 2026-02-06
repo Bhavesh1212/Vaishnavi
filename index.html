@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>A Little Gift 🎀</title>
+<title>A Small Gift 🎀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
@@ -17,153 +16,77 @@
 
 body{
   height:100vh;
-  background: linear-gradient(#ffd6e5,#fff0f5);
+  background: linear-gradient(135deg,#ffd6e5,#fff0f6);
   display:flex;
-  align-items:center;
   justify-content:center;
-}
-
-/* ---------- GIFT PAGE ---------- */
-#giftPage{
-  text-align:center;
-  animation:fadeIn 1s ease;
-}
-
-.gift{
-  font-size:6rem;
-  cursor:pointer;
-  animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-10px)}
-}
-
-.giftText{
-  margin-top:12px;
-  color:#ff5c8a;
-  font-size:1.1rem;
-}
-
-/* ---------- HELLO KITTY PAGE ---------- */
-#kittyPage{
-  display:none;
-  height:100vh;
-  width:100%;
-  background-image:
-    linear-gradient(rgba(255,182,193,0.55), rgba(255,182,193,0.55)),
-    url("https://images.unsplash.com/photo-1526045612212-70caf35c14df");
-  background-size:cover;
-  background-position:center;
-  display:flex;
   align-items:center;
-  justify-content:center;
-  animation:fadeIn 1s ease;
 }
 
 .card{
   background:white;
-  padding:30px 24px;
-  border-radius:22px;
-  max-width:320px;
+  padding:36px 28px;
+  border-radius:24px;
   text-align:center;
-  box-shadow:0 18px 35px rgba(0,0,0,0.2);
+  max-width:340px;
+  box-shadow:0 25px 50px rgba(0,0,0,0.18);
+  animation:fadeIn 1s ease;
 }
 
-.kitty{
-  width:120px;
-  margin-bottom:8px;
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+.gift{
+  font-size:5.5rem;
+  margin-bottom:14px;
+  animation:bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes bounce{
+  0%,100{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
 }
 
 h1{
+  font-size:1.35rem;
   color:#ff5c8a;
-  font-size:1.6rem;
-}
-
-.name{
-  font-size:1.2rem;
   margin-bottom:10px;
-}
-
-.rose{
-  font-size:3.6rem;
-  margin:10px 0;
 }
 
 p{
   font-size:0.95rem;
-  color:#444;
-  margin-bottom:14px;
+  color:#555;
+  margin-bottom:22px;
+  line-height:1.5;
 }
 
-button{
+a{
+  display:inline-block;
   background:#ff5c8a;
-  border:none;
   color:white;
-  padding:9px 22px;
-  border-radius:18px;
-  font-size:0.9rem;
-  cursor:pointer;
+  text-decoration:none;
+  padding:11px 26px;
+  border-radius:22px;
+  font-size:0.95rem;
 }
-
-#msg{
-  display:none;
-  margin-top:12px;
-  color:#ff5c8a;
-  font-weight:500;
-}
-
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
-}
+a:hover{opacity:0.9;}
 </style>
 </head>
 <body>
 
-<!-- GIFT PAGE -->
-<div id="giftPage">
-  <div class="gift" onclick="openGift()">🎁</div>
-  <div class="giftText">Tap to open your rose</div>
+<div class="card">
+  <div class="gift">🎁</div>
+
+  <h1>Hey…</h1>
+
+  <p>
+    Here’s something small<br>
+    for the cutest person in my life.
+  </p>
+
+  <a href="kitty.html">Open it 🎀</a>
 </div>
-
-<!-- HELLO KITTY PAGE -->
-<div id="kittyPage">
-  <div class="card">
-    <img class="kitty"
-         src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png"
-         alt="Hello Kitty">
-
-    <h1>Happy Rose Day</h1>
-    <div class="name">Vaishnavi 🎀</div>
-
-    <div class="rose">🌹</div>
-
-    <p>
-      Just a tiny hello,<br>
-      wrapped in pink and petals.
-    </p>
-
-    <button onclick="showMsg()">Tap me 🩷</button>
-
-    <div id="msg">
-      This rose is from me…<br>
-      hope it made you smile 🐱🌸
-    </div>
-  </div>
-</div>
-
-<script>
-function openGift(){
-  document.getElementById("giftPage").style.display="none";
-  document.getElementById("kittyPage").style.display="flex";
-}
-
-function showMsg(){
-  document.getElementById("msg").style.display="block";
-}
-</script>
 
 </body>
 </html>
