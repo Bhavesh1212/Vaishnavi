@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hello Vaishnavi 🎀</title>
+<title>A Little Gift 🎀</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
@@ -17,14 +17,49 @@
 
 body{
   height:100vh;
+  background: linear-gradient(#ffd6e5,#fff0f5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ---------- GIFT PAGE ---------- */
+#giftPage{
+  text-align:center;
+  animation:fadeIn 1s ease;
+}
+
+.gift{
+  font-size:6rem;
+  cursor:pointer;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+.giftText{
+  margin-top:12px;
+  color:#ff5c8a;
+  font-size:1.1rem;
+}
+
+/* ---------- HELLO KITTY PAGE ---------- */
+#kittyPage{
+  display:none;
+  height:100vh;
+  width:100%;
   background-image:
     linear-gradient(rgba(255,182,193,0.55), rgba(255,182,193,0.55)),
     url("https://images.unsplash.com/photo-1526045612212-70caf35c14df");
   background-size:cover;
   background-position:center;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  animation:fadeIn 1s ease;
 }
 
 .card{
@@ -34,23 +69,16 @@ body{
   max-width:320px;
   text-align:center;
   box-shadow:0 18px 35px rgba(0,0,0,0.2);
-  animation:pop 0.9s ease;
-}
-
-@keyframes pop{
-  from{opacity:0; transform:scale(0.92)}
-  to{opacity:1; transform:scale(1)}
 }
 
 .kitty{
   width:120px;
-  margin:0 auto 10px;
+  margin-bottom:8px;
 }
 
 h1{
   color:#ff5c8a;
   font-size:1.6rem;
-  margin-bottom:4px;
 }
 
 .name{
@@ -59,21 +87,14 @@ h1{
 }
 
 .rose{
-  font-size:3.5rem;
+  font-size:3.6rem;
   margin:10px 0;
-  animation:float 2.4s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-7px)}
 }
 
 p{
   font-size:0.95rem;
   color:#444;
-  margin-bottom:16px;
-  line-height:1.45;
+  margin-bottom:14px;
 }
 
 button{
@@ -86,45 +107,60 @@ button{
   cursor:pointer;
 }
 
-button:hover{
-  opacity:0.9;
-}
-
 #msg{
   display:none;
-  margin-top:14px;
+  margin-top:12px;
   color:#ff5c8a;
   font-weight:500;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <img class="kitty"
-       src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png"
-       alt="Hello Kitty">
+<!-- GIFT PAGE -->
+<div id="giftPage">
+  <div class="gift" onclick="openGift()">🎁</div>
+  <div class="giftText">Tap to open your rose</div>
+</div>
 
-  <h1>Happy Rose Day Vaish</h1>
-  <div class="name"> The person who makes life feel lighter 🎀</div>
+<!-- HELLO KITTY PAGE -->
+<div id="kittyPage">
+  <div class="card">
+    <img class="kitty"
+         src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png"
+         alt="Hello Kitty">
 
-  <div class="rose">🌹</div>
+    <h1>Happy Rose Day</h1>
+    <div class="name">Vaishnavi 🎀</div>
 
-  <p>
-    Just a tiny hello,<br>
-    with a pink little rose.
-  </p>
+    <div class="rose">🌹</div>
 
-  <button onclick="show()">Tap me 🩷</button>
+    <p>
+      Just a tiny hello,<br>
+      wrapped in pink and petals.
+    </p>
 
-  <div id="msg">
-    I wasn’t sure what to say… <br>
-    so I brought a rose. 🎀🌹 
+    <button onclick="showMsg()">Tap me 🩷</button>
+
+    <div id="msg">
+      This rose is from me…<br>
+      hope it made you smile 🐱🌸
+    </div>
   </div>
 </div>
 
 <script>
-function show(){
+function openGift(){
+  document.getElementById("giftPage").style.display="none";
+  document.getElementById("kittyPage").style.display="flex";
+}
+
+function showMsg(){
   document.getElementById("msg").style.display="block";
 }
 </script>
